@@ -1,6 +1,6 @@
 import { useForm } from "react-hook-form";
 
-const Educaition = (props) => {
+const Experience = (props) => {
   const {
     register,
     handleSubmit,
@@ -8,9 +8,8 @@ const Educaition = (props) => {
     reset,
   } = useForm({
     defaultValues: {
-      school: "",
-      degree: "",
-      filed: "",
+      jobTitle: "",
+      employer: "",
       Sdate: "",
       Edate: "",
       description: "",
@@ -20,38 +19,28 @@ const Educaition = (props) => {
   return (
     <form
       onSubmit={handleSubmit((data) => {
-        props.handleEducaition(data);
+        props.handleXP(data);
         reset();
       })}
     >
       <div className="form-group">
-        <label>School Name</label>
+        <label>Job title</label>
         <input
-          {...register("school", { required: "this is required" })}
+          {...register("jobTitle", { required: "this is required" })}
           className="form-control"
           type="text"
         ></input>
-        <p>{errors.school?.message}</p>
+        <p>{errors.jobTitle?.message}</p>
       </div>
 
       <div className="form-group">
-        <label>Degree</label>
+        <label>Employer</label>
         <input
-          {...register("degree", { required: "this is required" })}
+          {...register("employer", { required: "this is required" })}
           className="form-control"
           type="text"
         ></input>
-        <p>{errors.degree?.message}</p>
-      </div>
-
-      <div className="form-group">
-        <label>Field of Study</label>
-        <input
-          {...register("filed", { required: "this is required" })}
-          className="form-control"
-          type="text"
-        ></input>
-        <p>{errors.filed?.message}</p>
+        <p>{errors.employer?.message}</p>
       </div>
 
       <div className="form-group">
@@ -89,4 +78,4 @@ const Educaition = (props) => {
   );
 };
 
-export default Educaition;
+export default Experience;
