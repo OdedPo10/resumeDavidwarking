@@ -28,7 +28,17 @@ export default class Main extends Component {
         address: 'balbal'
       },
       about: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Doloremque id dolores veniam nostrum, nesciunt soluta minus sed, ducimus",
-      expiriense: [],
+      expiriense: [ {
+        jobTitle: "dasdasd",
+        employer: "asdasd",
+        Sdate: "asdasd",
+        Edate: "asdasdasd",
+        description: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Optio non exercitationem eos, voluptas rerum unde cum ipsa quod illo tempora quo at esse fugit, excepturi voluptatem deserunt neque suscipit in! Lorem ipsum dolor sit amet, consectetur adipisicing elit. Totam sunt voluptatem quidem nulla. Repudiandae error maiores numquam vero temporibus velit aut sapiente tenetur placeat labore dolorum, rem.",
+      },
+     
+   
+      
+    ],
       educaition: [],
       techs: {
         best: {
@@ -152,8 +162,7 @@ export default class Main extends Component {
     let resume = this.state.resume;
     resume.about = aboutInfo;
     this.setState({ resume });
-  };
-
+  }
   ////both for personal info//////////////
   handlePersonalInfo = (personalInfo) => {
     let resume = this.state.resume;
@@ -222,3 +231,4 @@ export default class Main extends Component {
   };
   ///////////////////////////////
 }
+

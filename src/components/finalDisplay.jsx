@@ -18,7 +18,6 @@ const FinnalDisplay = (props) => {
 
         )
     });
-    console.log(bestLevel + '%');
     let seconedLevel = { width: techs.seconed.level + '%' };
 
     let seconedTechs = techs.seconed.techs.map(t => {
@@ -35,7 +34,37 @@ const FinnalDisplay = (props) => {
     for (let i = 0; i < techs.rest.length; i++) {
         restTechs = restTechs + ' ' + techs.rest[i].value;
     }
-    console.log(restTechs);
+    
+    let ex;
+    ex=expiriense.map(element=>{
+        return(
+        <div className="timline-card timline-card-primary card shadow-sm" id="outCard">
+        <div className="card-body">
+            <div class="h5 mb-1">{element.jobTitle} <span class="text-muted h6">at {element.employer}</span></div>
+            <div class="text-muted text-small mb-2">{element.Sdate} - {element.Edate}</div>
+            <div className="workPar"><p>{element.description}</p></div>
+        </div>
+        </div>
+        )
+    })
+    let edj;
+    edj=educaition.map(element=>{
+        return(
+            <div className="timline-card timline-card-primary card shadow-sm" id="outCard2">
+            <div className="card-body">
+                <div class="h5 mb-1">{educaition.degree} <span class="text-muted h6">from {educaition.school}</span></div>
+                <div class="text-muted text-small mb-2">{educaition.Sdate} - {educaition.Edate}</div>
+                <div className="workPar"><p>{educaition.description}</p></div>
+            </div>
+        </div>
+        )
+    })
+    let educaitionExists='';
+    if(educaition.length)
+    {
+        educaitionExists='Education';
+    }
+   
 
 
     return (
@@ -109,30 +138,22 @@ const FinnalDisplay = (props) => {
                         <h2 className="aboutHeader3">Work Experience</h2>
                         <div className="work1">
                             <div className="timeLine">
-                                <div className="timline-card timline-card-primary card shadow-sm" id="outCard">
-                                    <div className="card-body">
-                                        <div class="h5 mb-1">Frontend Developer <span class="text-muted h6">at Creative Agency</span></div>
-                                        <div class="text-muted text-small mb-2">May, 2015 - Present</div>
-                                        <div className="workPar"><p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Optio non exercitationem eos, voluptas rerum unde cum ipsa quod illo tempora quo at esse fugit, excepturi voluptatem deserunt neque suscipit in! Lorem ipsum dolor sit amet, consectetur adipisicing elit. Totam sunt voluptatem quidem nulla. Repudiandae error maiores numquam vero temporibus velit aut sapiente tenetur placeat labore dolorum, rem.</p></div>
-                                    </div>
-                                </div>
+                                
+                                    {ex}
+                                
                             </div>
                         </div>
                     </div>
+
                     <div className="education">
-                        <h2 className="aboutHeader3">Education</h2>
+                        <h2 className="aboutHeader3">{educaitionExists}</h2>
                         <div className="work1">
                             <div className="timeLine">
-                                <div className="timline-card timline-card-primary card shadow-sm" id="outCard2">
-                                    <div className="card-body">
-                                        <div class="h5 mb-1">Bachelor of Computer Science <span class="text-muted h6">from Regional College</span></div>
-                                        <div class="text-muted text-small mb-2">2007 - 2011</div>
-                                        <div className="workPar"><p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Optio non exercitationem eos, voluptas rerum unde cum ipsa quod illo tempora quo at esse fugit, excepturi voluptatem deserunt neque suscipit in! Lorem ipsum dolor sit amet, consectetur adipisicing elit. Totam sunt voluptatem quidem nulla. Repudiandae error maiores numquam vero temporibus velit aut sapiente tenetur placeat labore dolorum, rem.</p></div>
-                                    </div>
-                                </div>
+                                {edj}
                             </div>
                         </div>
                     </div>
+
                 </div>
             </div>
         </React.Fragment>
@@ -145,13 +166,30 @@ export default FinnalDisplay;
 
 
 
+// <div className="card-body">
+//                                         <div class="h5 mb-1">Frontend Developer <span class="text-muted h6">at Creative Agency</span></div>
+//                                         <div class="text-muted text-small mb-2">May, 2015 - Present</div>
+//                                         <div className="workPar"><p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Optio non exercitationem eos, voluptas rerum unde cum ipsa quod illo tempora quo at esse fugit, excepturi voluptatem deserunt neque suscipit in! Lorem ipsum dolor sit amet, consectetur adipisicing elit. Totam sunt voluptatem quidem nulla. Repudiandae error maiores numquam vero temporibus velit aut sapiente tenetur placeat labore dolorum, rem.</p></div>
+//                                     </div>
 
 
 
 
 
-
-
+{/* <div className="timline-card timline-card-primary card shadow-sm" id="outCard2">
+                                    <div className="card-body">
+                                        <div class="h5 mb-1">Bachelor of Computer Science <span class="text-muted h6">from Regional College</span></div>
+                                        <div class="text-muted text-small mb-2">2007 - 2011</div>
+                                        <div className="workPar"><p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Optio non exercitationem eos, voluptas rerum unde cum ipsa quod illo tempora quo at esse fugit, excepturi voluptatem deserunt neque suscipit in! Lorem ipsum dolor sit amet, consectetur adipisicing elit. Totam sunt voluptatem quidem nulla. Repudiandae error maiores numquam vero temporibus velit aut sapiente tenetur placeat labore dolorum, rem.</p></div>
+                                    </div>
+                                </div>
+                                <div className="timline-card timline-card-primary card shadow-sm" id="outCard2">
+                                    <div className="card-body">
+                                        <div class="h5 mb-1">Bachelor of Computer Science <span class="text-muted h6">from Regional College</span></div>
+                                        <div class="text-muted text-small mb-2">2007 - 2011</div>
+                                        <div className="workPar"><p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Optio non exercitationem eos, voluptas rerum unde cum ipsa quod illo tempora quo at esse fugit, excepturi voluptatem deserunt neque suscipit in! Lorem ipsum dolor sit amet, consectetur adipisicing elit. Totam sunt voluptatem quidem nulla. Repudiandae error maiores numquam vero temporibus velit aut sapiente tenetur placeat labore dolorum, rem.</p></div>
+                                    </div>
+                                </div> */}
 {/* <div className="col-md-6">
                             <div className="mb-2"><span className="skillH">HTML</span>
                                 <div className="progress my-1">
