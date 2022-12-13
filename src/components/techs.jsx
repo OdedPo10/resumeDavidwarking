@@ -1,14 +1,21 @@
 import { useForm } from "react-hook-form";
 import Select from "react-select";
 
-const options = [
+import { useNavigate } from "react-router-dom";
+
+let wereTogo = true;
+
+const optionsLanguag = [
   { value: "sql", label: "sql" },
   { value: "java", label: "java" },
   { value: "pyton", label: "pyton" },
   { value: "html", label: "html" },
 ];
 
+
+
 const Techs = (props) => {
+  const navigate = useNavigate();
   const {
     register,
     handleSubmit,
@@ -18,6 +25,8 @@ const Techs = (props) => {
     defaultValues: {
       linkdinLink: "",
       githubLink: "",
+      best: '',
+      seconed: ''
     },
   });
 
@@ -26,37 +35,97 @@ const Techs = (props) => {
       onSubmit={handleSubmit((links) => {
         props.handleLinks(links);
         reset();
+        if (wereTogo) {
+          wereTogo = !wereTogo;
+          navigate("/");
+        }
+
+        else
+          navigate("/techs");
       })}
     >
-      <Select
-        options={options}
-        isMulti
-        onChange={(picks) => props.handleTechs(picks)}
-      />
 
-      <div className="form-group">
-        <label>Linkdin link</label>
-        <input
-          {...register("linkdinLink")}
-          className="form-control"
-          type="text"
-        ></input>
+      <div id="backround" >
+        <div id="containerTechs" className="shadow-sm p-3 mt-3 mb-5 bg-body rounded">
+
+          <div class="form-control mt-2">
+
+            <div class="form-group ">
+              <label>Pick your best technolagis(up to5)</label>
+              <Select
+                options={optionsLanguag}
+                isMulti
+                onChange={(picks) => props.handleBesttechs(picks)}
+              />
+            </div>
+            <div class="form-group ">
+              <label class="form-label">Pick your experty level</label>
+              <input   {...register("best")} type="range" class="form-range "  ></input>
+            </div>
+          </div>
+
+
+          <div class="form-control mt-2">
+            <div class="form-group ">
+              <label>Pick your seconed best technolagis(up to5)</label>
+              <Select
+                options={optionsLanguag}
+                isMulti
+                onChange={(picks) => props.handleSeconedtechs(picks)}
+              />
+            </div>
+            <div class="form-group ">
+              <label class="form-label">Pick your experty level</label>
+              <input {...register("seconed")} type="range" class="form-range " ></input>
+            </div>
+          </div>
+
+          <div class="form-control mt-2">
+            <div class="form-group ">
+              <label>Pick the rest of your skills(no limit)</label>
+              <Select
+                options={optionsLanguag}
+                isMulti
+                onChange={(picks) => props.handleRestofTechs(picks)}
+              />
+            </div>
+          </div>
+
+
+
+
+          <div className="form-group mt-1">
+            <label>Linkdin link</label>
+            <input
+              {...register("linkdinLink")}
+              className="form-control"
+              type="text"
+            ></input>
+          </div>
+
+          <div className="form-group mt-1">
+            <label>Git hub link</label>
+            <input
+              {...register("githubLink")}
+              className="form-control"
+              type="text"
+            ></input>
+          </div>
+
+          <button type="submit" className="btn btn-dark mt-2">
+            next
+          </button>
+        </div>
       </div>
+    </form >
 
-      <div className="form-group">
-        <label>Git hub link</label>
-        <input
-          {...register("githubLink")}
-          className="form-control"
-          type="text"
-        ></input>
-      </div>
 
-      <button type="submit" className="btn btn-dark mt-2">
-        next
-      </button>
-    </form>
   );
 };
+
+let changepath = () => {
+  wereTogo = !wereTogo;
+}
+
 
 export default Techs;
